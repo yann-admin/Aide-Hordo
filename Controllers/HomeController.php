@@ -10,6 +10,7 @@
 	/* ▂ ▅ ▆ █ Inclusion █ ▆ ▅ ▂ */
 		use App\Controllers\UserController;
         use App\Entities\ArrayRenderData;
+        use App\Entities\UserInformation;
         use App\Entities\Session;
 	/* ▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂ */ 
 
@@ -19,15 +20,21 @@
 
                 /* ▂ ▅  index()  ▅ ▂ */
                     Public function index(){
-                        $this -> login();
-                        // if ($_SESSION['connected']==false){
-                        //     $this -> login();
-                        // }else{
-                        //     //echo "cette méthode affiche la page d'acceuil";
-                        //     $this -> render('home/index');                         
-                        // };     
-                        
-                        
+                        if ($_SESSION['connected']==false){
+                            $this -> login();
+                        }else{
+                             # @ objUserInformation($type='', $textInfo='')
+                            $objUserInformation = new UserInformation('',"Bonjour " . $_SESSION["userFirstName"] .", nous sommes le " . date(" d M Y ") );
+                            # We construct the Render object in the $ArrayRender variable.
+                            # @ ArrayRenderData($titre, $onglet, $form, $scriptJs, $sheetCss, $responce)
+                            $objArrayRenderData = new ArrayRenderData();
+                            $objArrayRenderData -> setTitrePage("");
+                            $objArrayRenderData -> setOngletPage("API-Chichoune/Login");
+                            $objArrayRenderData -> setMessagePage( $objUserInformation -> getInfo() );
+                            // $objArrayRenderData -> setSheetCss("App/Css/formLogin.css");
+                            // $objArrayRenderData -> setScriptJs("App/Js/scriptPage/loginPage.js");
+                            $this -> render('home/index',["ArrayRender" => $objArrayRenderData]);                         
+                        };     
                     }
                 /* ▂ ▂ ▂ ▂ ▂ ▂ ▂ ▂ ▂ ▂  */ 
 
@@ -35,7 +42,7 @@
                     Public function disconnect(){
                         $objSession = new Session(); 
                         $objSession -> sessionDestroy();   
-                        header('location:home');
+                        header('location:login');
                     }
                 /* ▂ ▂ ▂ ▂ ▂ ▂ ▂ ▂ ▂ ▂  */ 
 

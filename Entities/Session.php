@@ -36,7 +36,7 @@
                         # Marque le cookie pour qu'il ne soit accessible que via le protocole HTTP. Cela signifie que le cookie ne sera pas accessible par les langage de script, comme Javascript. Cette configuration permet de limiter les attaques comme les attaques XSS (bien qu'elle n'est pas supporté par tous les navigateurs).
                         ini_set('session.cookie_httponly', 1);
                         session_start();
-                        $mode = 1;
+                        $mode = 0;
                         $sessionId = session_id();
                         $timeAutoRegenerateId = 900;
                         $timeAutoDisconnect = 600;                    
@@ -58,7 +58,7 @@
 
                         # Auto Disconnect duration in one because it's the priority test
                         if (isset($_SESSION['autoDisconnectSession']) && ($_SESSION['autoDisconnectSession'] < time()-$timeAutoDisconnect)) { 
-                            $this->sessionDestroy();
+                            $this -> sessionDestroy();
                             $sessionId = session_id(); 
                             $_SESSION['connected'] = false;
                             header('location:home');
@@ -100,7 +100,12 @@
                     unset($_SESSION['autoRegenerateIdSession']);
                     unset($_SESSION['connected']);
                     unset($_SESSION['token']);
-                    unset($_SESSION['token_time']);     
+                    unset($_SESSION['token_time']);    
+                    unset($_SESSION['idUser']);
+                    unset($_SESSION['userName']);
+                    unset($_SESSION['userFirstName']);
+                    unset($_SESSION['userAccess']);
+                    unset($_SESSION['connected']);
                 }
                 /* ▂ ▂ ▂ ▂ ▂ ▂ ▂ ▂ ▂ ▂  */ 
 

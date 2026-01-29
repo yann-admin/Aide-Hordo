@@ -1,7 +1,11 @@
 <?php
     /* ▂ ▅ ▆ █ Declaration of variables █ ▆ ▅ ▂ */
-        $level = '0';
-        $Menu = [];
+    if( isset( $_SESSION['userAccess'] ) ){
+        $level = $_SESSION['userAccess'];
+    }else{
+        $level = 0;
+    };
+    $Menu = [];
     /* ▂ ▂ ▂ ▂ ▂ ▂ ▂ */ 
 
     /* ▂ ▅ ▆ █ Whrite  li_1 ( Model menu ): █ ▆ ▅ ▂ */
@@ -14,9 +18,9 @@
         $Menu['li_1'] = $item;
     /* ▂ ▂ ▂ ▂ ▂ ▂ ▂ */ 
 
+if( $level == 0 ){ return $Menu; };
 
-if( $level != '0' ){ return $Menu; };
-
+if( $level >= 1 ){ 
     /* ▂ ▅ ▆ █ Whrite  li_2 ( Model with submenu ) █ ▆ ▅ ▂ */
         $item = '';
         $text = 'Usine';
@@ -97,7 +101,7 @@ if( $level != '0' ){ return $Menu; };
     /* ▂ ▂ ▂ ▂ ▂ ▂ ▂ */ 
 
 
-
+};
 
     return $Menu;
 ?>

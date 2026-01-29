@@ -13,6 +13,7 @@
 			/* ▂ ▅ Attributs ▅ ▂ */
 				private $titrePage_ = '';
 				private $ongletPage_ = '';
+				private $messagePage_ = '';
 				private $forms_ = '';
 				private $scriptJs_ = '';
 				private $sheetCss_ = '';
@@ -21,10 +22,11 @@
             /* ▂ ▅ ▆ █ Methodes █ ▆ ▅ ▂ */
 			
 			    /*▂ ▅ ▆ █ construct █ ▆ ▅ ▂ */
-				    # @ objArrayRenderData($titrePage='', $ongletPage='', $forms='', $scriptJs='', $sheetCss='', $responce='')
-					public function __construct($titrePage='', $ongletPage='', $forms='', $scriptJs='', $sheetCss='', $responce=''){
+				    # @ objArrayRenderData($titrePage='', $ongletPage='', $messagePage='', $forms='', $scriptJs='', $sheetCss='', $responce='')
+					public function __construct($titrePage='', $ongletPage='', $messagePage='', $forms='', $scriptJs='', $sheetCss='', $responce=''){
 						$this -> titrePage_ = $titrePage;
 						$this -> ongletPage_ = $ongletPage;
+						$this -> messagePage_ =  $messagePage;
 						$this -> forms_ =  $forms;
 						$this -> scriptJs_ = $scriptJs;
 						$this -> sheetCss_ = $sheetCss;
@@ -35,6 +37,7 @@
                 /* ▂ ▅ Setters  ▅ ▂ */
 					public function setTitrePage ($modifTitre ){ $this -> titrePage_  = trim($modifTitre ); return $this; }
 					public function setOngletPage($modifOnglet){ $this -> ongletPage_ = trim($modifOnglet); return $this; }
+					public function setMessagePage ($modifMessagePage ){ $this -> messagePage_  = trim($modifMessagePage); return $this; }
 					public function setForms ($modifForm ){ $this -> forms_  = trim($modifForm); return $this; }
 					public function setScriptJs ($modifScriptJs ){ $this -> scriptJs_  = trim($modifScriptJs); return $this; }
 					public function setSheetCss ($modifSheetCss ){ $this -> sheetCss_  = trim($modifSheetCss); return $this; }
@@ -44,6 +47,7 @@
 				/* ▂ ▅ Getters ▅ ▂ */
 					public function getTitrePage (){ return $this -> titrePage_; }
 					public function getOngletPage(){ return $this -> ongletPage_; }
+					public function getMessagePage (){ return $this -> messagePage_; }
 					public function getForms (){ return $this -> forms_; }
 					public function getSheetCss (){ return $this -> sheetCss_ ; }
 					public function getScriptJs (){ return $this -> scriptJs_; }

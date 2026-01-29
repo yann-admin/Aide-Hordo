@@ -25,7 +25,7 @@
     /* ▂ ▅ ▆ █  Inclusion  █ ▆ ▅ ▂ */
         use App\Entities\Session;
         use App\Autoloader;
-        use App\Core\Router\Router;  
+        use App\Core\Router;  
         use Dotenv\Dotenv;
         // 
         require '../vendor/autoload.php';
