@@ -284,7 +284,7 @@ let regex = function regex(regex) {
             }; 
         });
 
-        formValidate = true;
+        // formValidate = true;
         if (formValidate) { document.getElementById('true').removeAttribute('disabled'); } else { document.getElementById('true').setAttribute('disabled', '');};
     };
 /* ▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂ */
