@@ -33,9 +33,8 @@
 
                 /* ▂ ▅  disconnect()  ▅ ▂ */
                     Public function disconnect(){
-                        unset($_SESSION['token']);
-                        unset($_SESSION['token_time']);
-                        session_destroy(); 
+                        $objSession = new Session(); 
+                        $objSession -> sessionDestroy();   
                         header('location:home');
                     }
                 /* ▂ ▂ ▂ ▂ ▂ ▂ ▂ ▂ ▂ ▂  */ 

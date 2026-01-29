@@ -88,12 +88,21 @@
                 /* ▂ ▅  sessionDestroy  ▅ ▂ */
                     public function sessionDestroy(){
                         # Reco via https://www.php.net/manual/en/session.security.ini.php:
-                        unset($_SESSION['token']);
-                        unset($_SESSION['token_time']);
-                        session_destroy();
+                        $this -> varSessionDestroy();
+                        session_destroy(); 
                     }
                 /* ▂ ▂ ▂ ▂ ▂ ▂ ▂ ▂ ▂ ▂  */ 
 
+                /* ▂ ▅ varSessionDestroy  ▅ ▂ */
+                public function varSessionDestroy(){
+                    # Reco via https://www.php.net/manual/en/session.security.ini.php:
+                    unset($_SESSION['autoDisconnectSession']);
+                    unset($_SESSION['autoRegenerateIdSession']);
+                    unset($_SESSION['connected']);
+                    unset($_SESSION['token']);
+                    unset($_SESSION['token_time']);     
+                }
+                /* ▂ ▂ ▂ ▂ ▂ ▂ ▂ ▂ ▂ ▂  */ 
 
                 /* ▂ ▅ Setters  ▅ ▂ */
                 /* ▂ ▂ ▂ ▂ ▂ ▂ ▂ ▂ ▂ ▂  */
@@ -102,6 +111,6 @@
                 /* ▂ ▂ ▂ ▂ ▂ ▂ ▂ ▂ ▂ ▂  */
 
             /* ▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂ */ 
-        };
+    };  
     /* ▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂▂ */  
 ?>
