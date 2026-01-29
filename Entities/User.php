@@ -64,7 +64,7 @@
 
 
 			    /*▂ ▅ ▆ █ construct █ ▆ ▅ ▂ */
-				    # @ objUserModel($status='', $divtInfo='', $data='', $redirect='')
+				    # @ objUserModel$IdUser='', $UserName='', $UserFirstName='', $UserEmail='', $UserRecoveryCode='', $UserAccess='', $RemenberMe='', $Cookies='', $LastConnection='')
 					public function __construct($IdUser='', $UserName='', $UserFirstName='', $UserEmail='', $UserRecoveryCode='', $UserAccess='', $RemenberMe='', $Cookies='', $LastConnection=''){
 						$this -> IdUser = $IdUser;
 						$this -> UserName = $UserName;
@@ -79,18 +79,14 @@
 				/* ▂ ▂ ▂ ▂ ▂ ▂ ▂ ▂ ▂ ▂  */
 
 
-			/*▂ ▅ ▆ █ construct █ ▆ ▅ ▂ */
+			/*▂ ▅ ▆ █ hydrate($donnees) █ ▆ ▅ ▂ */
 				public function hydrate($donnees){
-				
-					foreach ($donnees as $attribut => $valeur)
-					{
-					$methode = 'set'.str_replace(' ', '', ucwords(str_replace('_', ' ', $attribut)));
-						
-					if (is_callable(array($this, $methode)))
-					{
-						$this->$methode($valeur);
-					}
-					}
+					foreach ($donnees as $attribut => $valeur){
+						$methode = 'set'.str_replace(' ', '', ucwords(str_replace('_', ' ', $attribut)));	
+						if (is_callable(array($this, $methode))){
+							$this->$methode($valeur);
+						};
+					};
 				}
 			/* ▂ ▂ ▂ ▂ ▂ ▂ ▂ ▂ ▂ ▂  */
 
